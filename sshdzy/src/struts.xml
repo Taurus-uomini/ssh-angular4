@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.custom.i18n.resources" value="com.city.sshdzy.language.messages"/>
+    <package name="test" namespace="/" extends="json-default">
+    	<action name="getlist" class="testController" method="getlist">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="edit" class="testController" method="edit">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="fileupload" class="fileUploadController" method="fileupload">
+    		<param name="fileuploaddir">/uploads</param>
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="getmenu" class="menuController" method="getmenu">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    </package>
+    <package name="user" namespace="/user" extends="json-default">
+    	<action name="register" class="userController" method="register">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="activation" class="userController" method="activation">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="login" class="userController" method="login">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="checkLogin" class="userController" method="checkLogin">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="changePasswd" class="userController" method="changePasswd">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="editInfo" class="userController" method="editInfo">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="deleteUser" class="userController" method="deleteUser">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="getUserList" class="userController" method="getUserList">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="getUserCount" class="userController" method="getUserCount">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="getPhoto" class="userController" method="getPhoto">
+    		<result name="success" type="stream">
+    			<param name="contentType">application/octet-stream</param>
+    			<param name="inputName">inputStream</param>
+			</result>
+			<result name="false"></result>
+    	</action>
+    </package>
+    <package name="admin" namespace="/admin" extends="json-default">
+    	<action name="login" class="adminController" method="login">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="checkLogin" class="adminController" method="checkLogin">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="changePasswd" class="adminController" method="changePasswd">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    </package>
+    <package name="hobby" namespace="/hobby" extends="json-default">
+    	<action name="getHobbyList" class="hobbyController" method="getHobbyList">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    </package>
+    <package name="question" namespace="/user" extends="json-default">
+    	<interceptors>
+    		<interceptor name="userChecking" class="com.city.sshdzy.interceptor.userCheckingInterceptor"></interceptor>
+    	</interceptors>
+    	<action name="addQuestion" class="questionController" method="addQuestion">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="deleteQuestion" class="questionController" method="deleteQuestion">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="getQuestionList" class="questionController" method="getQuestionList">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="getQuestionCount" class="questionController" method="getQuestionCount">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="checkQuestion" class="questionController" method="checkQuestion">
+    		<result name="success" type="json">
+    			<param name="root">datamap</param>
+			</result>
+    	</action>
+    	<action name="questionMain" class="questionController" method="questionMain">
+    		<interceptor-ref name="userChecking"></interceptor-ref>
+    		<result name="success">/user/addquestion.jsp</result>
+    	</action>
+    </package>
+</struts>

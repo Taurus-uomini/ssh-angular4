@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>你的问卷</title>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="app/flat-ui/css/bootstrap.min.css">
+    <link rel="stylesheet" href="app/flat-ui/css/flat-ui.min.css">
+    <!-- Polyfill(s) for older browsers -->
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="app/flat-ui/js/flat-ui.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+
+    <script src="systemjs.config.js"></script>
+    <script>
+      System.import('main.js').catch(function(err){ console.error(err); });
+    </script>
+  </head>
+
+  <body>
+    <my-app>正在加载 ...</my-app>
+  </body>
+</html>

@@ -1,0 +1,62 @@
+<div class="bg" id="bg">
+    <img src="/app/user/img/bg.jpg"/>
+</div>
+<div class="loading" id="loading" [style.display]="isloading?'block':'none'" >
+    <img src="/app/user/img/loading.gif"/>
+</div>
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">修改信息</div>
+        <div class="panel-body">
+            <form #userForm="ngForm">
+                <div class="input-div">
+                    <div *ngIf="formErrors.error" class="alert alert-danger">
+                        {{formErrors.error}}
+                    </div>
+                </div>
+                <div class="input-div">
+                    <input type="text" class="form-control input-sm" [(ngModel)]="user.uname" readonly="readonly" name="uname" />
+                </div>
+                <div class="input-div">
+                    <input type="text" class="form-control input-sm" [(ngModel)]="user.urename" readonly="readonly" name="urename" />
+                </div>
+                <div class="input-div">
+                    <input type="text" class="form-control input-sm" [(ngModel)]="user.uemail" readonly="readonly" name="uemail" />
+                </div>
+                <div class="input-div">
+                    <input type="text" class="form-control input-sm" [(ngModel)]="user.uim.uphone" required name="uphone" placeholder="手机号" pattern="^1(3[0-9]|4[57]|5[0-35-9]|7[0135678]|8[0-9])\d{8}$" />
+                    <div *ngIf="formErrors.uphone" class="alert alert-danger">
+                        {{formErrors.uphone}}
+                    </div>
+                </div>
+                <div class="input-div">
+                    <div class="checkbox">
+                        <label *ngFor="let hobby of hobbies">
+                            <input type="checkbox" [checked]="hobbiesid[hobby.hid-1]"  name="hobbiesid" (click)="hobbyClick(hobby.hid-1)" value="{{hobby.hid}}">{{hobby.hname}}
+                        </label>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="input-div">
+                            <input type="text" class="form-control input-file input-sm" name="uphoto" (mouseover)="fileuploadservice.setmousemove(file1,true)"
+                                (mouseout)="fileuploadservice.setmousemove(file1,false)" readonly="true" (click)="file1.click()"
+                                value="{{file1.valuedata}}" placeholder="点击添加你的头像" />
+                            <button class="btn btn-upload" type="button" (click)="fileuploadservice.upload(0)">上传</button>
+                            <input type="file" class="input-file-hidden" #file1 (load)="fileuploadservice.addfile()" (change)="fileuploadservice.setfile(file1,0)"
+                                name="file1" />
+                            <img *ngIf="file1.ismousemove" src="{{file1.url}}" />
+                            <img *ngIf="!file1.url" src="http://localhost:8080/sshdzy/user/getPhoto?um.uid={{user.uid}}" />
+                            <div *ngIf="formErrors.uphoto" class="alert alert-danger">
+                                {{formErrors.uphoto}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-div">
+                    <button class="btn btn-primary" type="button" [disabled]="!userForm.form.valid" (click)="edit()">修改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

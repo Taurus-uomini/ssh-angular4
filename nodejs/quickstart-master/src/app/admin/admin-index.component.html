@@ -1,0 +1,63 @@
+<div class="bg" id="bg">
+    <img src="/app/admin/img/bg.jpg"/>
+</div>
+<div class="loading" id="loading" [style.display]="isloading?'block':'none'" >
+    <img src="/app/admin/img/loading.gif"/>
+</div>
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">用户信息</div>
+        <div class="panel-body">
+            <table class="table table-condensed table-hover">
+                <tr>
+                    <td>ID</td>
+                    <td>用户名</td>
+                    <td>真实姓名</td>
+                    <td>邮箱</td>
+                    <td>手机</td>
+                    <td>爱好</td>
+                    <td>注册时间</td>
+                    <td>状态</td>
+                    <td>操作</td>
+                </tr>
+                <tr *ngFor="let user of users">
+                    <td>{{user.uid}}</td>
+                    <td>{{user.uname}}</td>
+                    <td>{{user.urename}}</td>
+                    <td>{{user.uemail}}</td>
+                    <td>
+                        <em *ngIf="user.uim==null||user.uim.uphone==null">无</em>
+                        <em *ngIf="user.uim!=null&&user.uim.uphone!=null">{{user.uim.uphone}}</em>
+                    </td>
+                    <td>
+                        <em *ngIf="user.hobbies==null||user.hobbies.length==0">无</em>
+                        <em *ngFor="let hobby of user.hobbies">{{hobby.hname}}&nbsp;</em>
+                    </td>
+                    <td>{{user.uregistertime}}</td>
+                    <td>
+                        <em *ngIf="user.ustatic==0">未激活</em>
+                        <em *ngIf="user.ustatic==1">已激活</em>
+                    </td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="true">
+                                菜单
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#" (click)="deleteUser(user.uid)">删除</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <nav aria-label="...">
+                <ul class="pager">
+                    <li><a href="" class="btn"  [class.disabled]="nowpage-1==0" (click)="getPage(nowpage-1,$event)">上一页</a></li>
+                    <li><a href="" class="btn" [class.disabled]="nowpage+1==allpage+1" (click)="getPage(nowpage+1,$event)" >下一页</a></li>
+                </ul>
+            </nav>
+            </div>
+    </div>
+</div>

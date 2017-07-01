@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<menu>
+	<item>
+		<title>用户管理</title>
+		<uri>/admin/index</uri>
+		<loginurl>/admin/login</loginurl>
+		<power>1</power>
+	</item>
+	<item>
+		<title>问卷管理</title>
+		<uri>/admin/index/question</uri>
+		<loginurl></loginurl>
+		<power>1</power>
+	</item>
+	<item>
+		<title>修改密码</title>
+		<uri>/admin/index/changepasswd</uri>
+		<loginurl>/admin/login</loginurl>
+		<power>1</power>
+	</item>
+	<item>
+		<title>用户中心</title>
+		<uri>/user/index</uri>
+		<loginurl>/user/login</loginurl>
+		<power>2</power>
+	</item>
+	<item>
+		<title>用户修改信息</title>
+		<uri>/user/index/editinfo</uri>
+		<loginurl>/user/login</loginurl>
+		<power>2</power>
+	</item>
+	<item>
+		<title>用户修改密码</title>
+		<uri>/user/index/changepasswd</uri>
+		<loginurl>/user/login</loginurl>
+		<power>2</power>
+	</item>
+	<item>
+		<title>问卷管理</title>
+		<uri>/user/index/question</uri>
+		<loginurl></loginurl>
+		<power>2</power>
+	</item>
+</menu>

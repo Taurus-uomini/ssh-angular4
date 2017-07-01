@@ -1,0 +1,72 @@
+<div class="bg" id="bg">
+    <img src="/app/user/img/bg.jpg" />
+</div>
+<div class="loading" id="loading" [style.display]="isloading?'block':'none'">
+    <img src="/app/user/img/loading.gif" />
+</div>
+<div class="jumbotron main">
+    <form #userForm="ngForm">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="input-div">
+                    <div *ngIf="formErrors.error" class="alert alert-danger">
+                        {{formErrors.error}}
+                    </div>
+                </div>
+                <div class="input-div">
+                    <input type="text" class="form-control input-sm" [(ngModel)]="user.uname" required name="uname" minlength="4" maxlength="20"
+                        placeholder="用户名" />
+                    <div *ngIf="formErrors.uname" class="alert alert-danger">
+                        {{formErrors.uname}}
+                    </div>
+                </div>
+                <div class="input-div">
+                    <input type="password" class="form-control input-sm" [(ngModel)]="user.upassword" required name="upassword" minlength="4"
+                        maxlength="20" placeholder="密码" />
+                    <div *ngIf="formErrors.upassword" class="alert alert-danger">
+                        {{formErrors.upassword}}
+                    </div>
+                </div>
+                <div class="input-div">
+                    <input type="password" class="form-control input-sm" [(ngModel)]="rupassword" required name="rupassword" pattern="{{user.upassword}}"
+                        placeholder="重复密码" />
+                    <div *ngIf="formErrors.rupassword" class="alert alert-danger">
+                        {{formErrors.rupassword}}
+                    </div>
+                </div>
+                <div class="input-div">
+                    <input type="text" class="form-control input-sm" [(ngModel)]="user.urename" required name="urename" placeholder="真实姓名" />
+                    <div *ngIf="formErrors.urename" class="alert alert-danger">
+                        {{formErrors.urename}}
+                    </div>
+                </div>
+                <div class="input-div">
+                    <input type="email" class="form-control input-sm" [(ngModel)]="user.uemail" required name="uemail" pattern="^[A-Za-z0-9_-\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$"
+                        placeholder="电子邮箱" />
+                    <div *ngIf="formErrors.uemail" class="alert alert-danger">
+                        {{formErrors.uemail}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="input-div">
+                    <input type="text" class="form-control input-file input-sm" name="uphoto" (mouseover)="fileuploadservice.setmousemove(file1,true)" (mouseout)="fileuploadservice.setmousemove(file1,false)"
+                        readonly="true" (click)="file1.click()" value="{{file1.valuedata}}" placeholder="点击添加你的头像" />
+                    <button class="btn btn-upload" type="button" (click)="fileuploadservice.upload(0)">上传</button>
+                    <input type="file" class="input-file-hidden" #file1 (load)="fileuploadservice.addfile()" (change)="fileuploadservice.setfile(file1,0)"
+                        name="file1" />
+                    <img *ngIf="file1.ismousemove" src="{{file1.url}}" />
+                    <div *ngIf="formErrors.uphoto" class="alert alert-danger">
+                        {{formErrors.uphoto}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="input-div">
+            <button class="btn btn-primary" type="button" [disabled]="!userForm.form.valid||!file1.isupload" (click)="register()">注册</button>
+            <a [routerLink]="['/user/login']">已有账号，点击登陆</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,43 @@
+<div class="bg" id="bg">
+    <img src="/app/user/img/bg.jpg"/>
+</div>
+<div class="loading" id="loading" [style.display]="isloading?'block':'none'" >
+    <img src="/app/user/img/loading.gif"/>
+</div>
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">修改密码</div>
+        <div class="panel-body">
+            <form #adminForm="ngForm">
+                <div class="input-div">
+                    <div *ngIf="formErrors.error" class="alert alert-danger">
+                        {{formErrors.error}}
+                    </div>
+                </div>
+                <div class="input-div">
+                    <input type="password" class="form-control input-sm" [(ngModel)]="apassword" required name="apassword" minlength="4" maxlength="20"
+                        placeholder="原密码" />
+                    <div *ngIf="formErrors.apassword" class="alert alert-danger">
+                        {{formErrors.apassword}}
+                    </div>
+                </div>
+                <div class="input-div">
+                    <input type="password" class="form-control input-sm" [(ngModel)]="newapassword" required name="newapassword" minlength="4"
+                        maxlength="20" placeholder="新密码" />
+                    <div *ngIf="formErrors.newapassword" class="alert alert-danger">
+                        {{formErrors.newapassword}}
+                    </div>
+                </div>
+                <div class="input-div">
+                    <input type="password" class="form-control input-sm" [(ngModel)]="newreapassword" required name="newreapassword" placeholder="新密码" pattern="{{newapassword}}" />
+                    <div *ngIf="formErrors.newreapassword" class="alert alert-danger">
+                        {{formErrors.newreapassword}}
+                    </div>
+                </div>
+                <div class="input-div">
+                    <button class="btn btn-primary" type="button" [disabled]="!adminForm.form.valid" (click)="changePasswd()">修改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

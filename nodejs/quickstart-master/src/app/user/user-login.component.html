@@ -1,0 +1,31 @@
+<div class="bg" id="bg">
+    <img src="/app/user/img/bg.jpg"/>
+</div>
+<div class="loading" id="loading" [style.display]="isloading?'block':'none'" >
+    <img src="/app/user/img/loading.gif"/>
+</div>
+<div class="jumbotron main">
+    <form #userForm="ngForm">
+        <div class="input-div">
+            <div *ngIf="formErrors.error" class="alert alert-danger">
+                {{formErrors.error}}
+            </div>
+        </div>
+        <div class="input-div">
+            <input type="text" class="form-control input-sm" [(ngModel)]="user.uname" required name="uname" minlength="4" maxlength="20" placeholder="用户名" />
+            <div *ngIf="formErrors.uname" class="alert alert-danger">
+                {{formErrors.uname}}
+            </div>
+        </div>
+        <div class="input-div">
+            <input type="password" class="form-control input-sm" [(ngModel)]="user.upassword" required name="upassword" minlength="4" maxlength="20" placeholder="密码" />
+            <div *ngIf="formErrors.upassword" class="alert alert-danger">
+                {{formErrors.upassword}}
+            </div>
+        </div>
+        <div class="input-div">
+            <button class="btn btn-primary" type="button" [disabled]="!userForm.form.valid" (click)="login()">登陆</button>
+            <a [routerLink]="['/user/register']">没有账号，点击注册</a>
+        </div>
+    </form>
+</div>

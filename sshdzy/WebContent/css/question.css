@@ -1,0 +1,119 @@
+.main
+{
+    height: 460px;
+    margin-bottom: 10px;
+}
+.left
+{
+    float: left;
+    width: 20%;
+    height: 100%;
+}
+.center
+{
+    float: left;
+    width: 80%;
+    padding: 0px 20px 0px 20px;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+.footer
+{
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    text-align: center;
+}
+.update_wait
+{
+  z-index: 100000;
+  background-color: rgba(1,0,0,0.5);
+  position: fixed;
+  left: 0px;
+  right: 0px;
+  top: 0px;
+  bottom: 0px;
+  display: none;
+}
+.update_wait img
+{
+    width: 60px;
+    margin: 25% 50%;
+}
+.media-left a img.media-object
+{
+    width: 200px;
+}
+.media-body
+{
+    width: 100%;
+}
+.media-body div
+{
+    width: 50%;
+}
+.media-body div p
+{
+    overflow-wrap: break-word;
+}
+.media
+{
+    margin-bottom: 10px;
+}
+#components
+{
+    min-height: 600px;
+}
+#target
+{
+    min-height: 200px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
+#target .component
+{
+    border: 1px solid #fff;
+}
+#temp
+{
+    width: 500px;
+    background: white;
+    border: 1px dotted #ccc;
+    border-radius: 10px;
+}
+.popover-content form 
+{
+    margin: 0 auto;
+    width: 213px;
+}
+.popover-content form .btn
+{
+    margin-right: 10px
+}
+.popover-content form .controls textarea
+{
+    display: block;
+    width: 95%;
+}
+#source
+{
+    min-height: 500px;
+}
+.control-group.component
+{
+    margin-left: 5%;
+}
+.controls.leipiplugins-orgvalue
+{
+    margin-left: 15%;
+}
+.container 
+{
+    width: 100% !important;
+}
+.span6
+{
+    float: left;
+    width: 50% !important;
+}

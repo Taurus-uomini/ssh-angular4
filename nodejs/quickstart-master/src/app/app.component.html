@@ -1,0 +1,33 @@
+<nav class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-01">
+      <span class="sr-only">Toggle navigation</span>
+    </button>
+        <a class="navbar-brand" routerLink="/">你的问卷</a>
+    </div>
+    <div class="collapse navbar-collapse" id="navbar-collapse-01">
+        <ul class="nav navbar-nav">
+            <li><a routerLink="/">首页</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li *ngIf="!appLoginService.hasInfo()"><a routerLink="/user/login">登陆</a></li>
+            <li *ngIf="appLoginService.hasInfo()" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">{{appLoginService.getInfo()}}<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a routerLink="{{appLoginService.getMainUrl()}}">我的</a>
+                    </li>
+                    <li>
+                        <a routerLink="/user/logout">退出</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div *ngIf="menuService.isShowMenu()" class="left-menu">
+    <ul class="nav nav-pills nav-stacked">
+        <li *ngFor="let menu of menuService.getNowMenu()" [class.hide]="appLoginService.getType()!=menu.power" [class.active]="menu.active==1"><a routerLink="{{menu.uri}}">{{menu.title}}</a></li>
+    </ul>
+</div>
+<router-outlet></router-outlet>

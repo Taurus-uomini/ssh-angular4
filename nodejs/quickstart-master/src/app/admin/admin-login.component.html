@@ -1,0 +1,30 @@
+<div class="bg" id="bg">
+    <img src="/app/admin/img/bg.jpg"/>
+</div>
+<div class="loading" id="loading" [style.display]="isloading?'block':'none'" >
+    <img src="/app/admin/img/loading.gif"/>
+</div>
+<div class="jumbotron main">
+    <form #adminForm="ngForm">
+        <div class="input-div">
+            <div *ngIf="formErrors.error" class="alert alert-danger">
+                {{formErrors.error}}
+            </div>
+        </div>
+        <div class="input-div">
+            <input type="text" class="form-control input-sm" [(ngModel)]="admin.aname" required name="aname" minlength="4" maxlength="20" placeholder="用户名" />
+            <div *ngIf="formErrors.aname" class="alert alert-danger">
+                {{formErrors.aname}}
+            </div>
+        </div>
+        <div class="input-div">
+            <input type="password" class="form-control input-sm" [(ngModel)]="admin.apassword" required name="apassword" minlength="4" maxlength="20" placeholder="密码" />
+            <div *ngIf="formErrors.apassword" class="alert alert-danger">
+                {{formErrors.apassword}}
+            </div>
+        </div>
+        <div class="input-div">
+            <button class="btn btn-primary" type="button" [disabled]="!adminForm.form.valid" (click)="login()">登陆</button>
+        </div>
+    </form>
+</div>

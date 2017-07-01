@@ -1,0 +1,42 @@
+<div class="bg" id="bg">
+    <img src="/app/admin/img/bg.jpg"/>
+</div>
+<div class="loading" id="loading" [style.display]="isloading?'block':'none'" >
+    <img src="/app/admin/img/loading.gif"/>
+</div>
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">问卷信息</div>
+        <div class="panel-body">
+            <table class="table table-condensed table-hover">
+                <tr>
+                    <td>ID</td>
+                    <td>问卷题目</td>
+                    <td>操作</td>
+                </tr>
+                <tr *ngFor="let question of questions">
+                    <td>{{question.qid}}</td>
+                    <td>{{question.qtitle}}</td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="true">
+                                菜单
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                                <li><a href="#" (click)="showQuestion(question.qid)">查看</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <nav aria-label="...">
+                <ul class="pager">
+                    <li><a href="" class="btn"  [class.disabled]="nowpage-1==0" (click)="getPage(nowpage-1,$event)">上一页</a></li>
+                    <li><a href="" class="btn" [class.disabled]="nowpage+1==allpage+1" (click)="getPage(nowpage+1,$event)" >下一页</a></li>
+                </ul>
+            </nav>
+            </div>
+    </div>
+</div>

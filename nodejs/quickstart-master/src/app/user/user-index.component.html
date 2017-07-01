@@ -1,0 +1,45 @@
+<div class="bg" id="bg">
+    <img src="/app/user/img/bg.jpg"/>
+</div>
+<div class="loading" id="loading" [style.display]="isloading?'block':'none'" >
+    <img src="/app/user/img/loading.gif"/>
+</div>
+<div class="main">
+    <div class="panel panel-info">
+        <div class="panel-heading">用户信息</div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-4"><img class="user-photo" src="http://localhost:8080/sshdzy/user/getPhoto?um.uid={{user.uid}}"></div>
+                <div class="col-md-8"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">用户名：</div>
+                <div class="col-md-8">{{user.uname}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">真实姓名：</div>
+                <div class="col-md-8">{{user.urename}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">邮箱：</div>
+                <div class="col-md-8">{{user.uemail}}</div>
+            </div>
+            <div *ngIf="user.uim!=null" class="row">
+                <div class="col-md-4">手机号：</div>
+                <div class="col-md-8">{{user.uim.uphone}}</div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">注册日期：</div>
+                <div class="col-md-8">{{user.uregistertime}}</div>
+            </div>  
+            <div *ngIf="user.hobbies!=null&&user.hobbies.length>0" class="row">
+                <div class="col-md-4">爱好：</div>
+                <div class="col-md-8"><em *ngFor="let hobby of user.hobbies">{{hobby.hname}}&nbsp;</em></div>
+            </div>           
+        </div>
+    </div>
+    <div class="btn-group">
+        <a class="btn btn-primary" routerLink="/user/index/editinfo">修改信息</a>
+        <a class="btn btn-primary" routerLink="/user/index/changepasswd">修改密码</a>
+    </div>
+</div>
